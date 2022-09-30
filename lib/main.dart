@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lokman_to_do/views/view_to_do.dart';
+import 'package:lokman_to_do/views/view_user_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      home: const MyHomePage(title: 'Lokman To Do App'),
     );
   }
 }
@@ -29,20 +32,36 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  void onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  int _currentIndex = 0;
+  final List<Widget> _children = [const ViewUserList(), const ViewToDo()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("Initial commit")
-          ],
-        ),
+      body: _children[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: onTabTapped,
+        currentIndex: _currentIndex,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "Kullanıcılar",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.text_increase),
+            label: "To Do",
+          ),
+        ],
       ),
     );
   }
