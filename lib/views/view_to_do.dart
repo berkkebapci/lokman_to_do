@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lokman_to_do/widgets/widget_text.dart';
 
 class ViewToDo extends StatelessWidget {
   final int? id;
@@ -8,6 +9,7 @@ class ViewToDo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: body(),
     );
   }
@@ -15,7 +17,7 @@ class ViewToDo extends StatelessWidget {
   Widget body() {
     return SingleChildScrollView(
       child: Column(
-        children: const [Text("ToDo")],
+        children: [TextBasic(text: "To Do")],
       ),
     );
   }

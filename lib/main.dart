@@ -17,21 +17,21 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const MyHomePage(title: 'Lokman To Do App'),
+      home: const ViewHome(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+class ViewHome extends StatefulWidget {
+  const ViewHome({Key? key}) : super(key: key);
 
-  final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<ViewHome> createState() => _ViewHomeState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _ViewHomeState extends State<ViewHome> {
+
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
@@ -39,22 +39,18 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   int _currentIndex = 0;
-  final List<Widget> _children = [const ViewUserList(), const ViewToDo()];
+  final List<Widget> _children = [ViewUserList(), const ViewToDo()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-        centerTitle: true,
-      ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         currentIndex: _currentIndex,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.people),
             label: "Kullanıcılar",
           ),
           BottomNavigationBarItem(
