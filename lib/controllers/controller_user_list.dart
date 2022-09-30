@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:lokman_to_do/models/user_list.dart';
+import 'package:lokman_to_do/services/endpoint.dart';
 
 class ControllerUserList extends GetxController {
   @override
@@ -28,8 +28,7 @@ class ControllerUserList extends GetxController {
   ModelUserList get modelUserList => _modelUserList.value;
 
   Future<void> getUserList() async {
-    var response = await http.get(Uri.parse('https://reqres.in/api/users?page=2'));
-
+    var response = await http.get(Uri.parse(Endpoint.getUserList));
     if (response.statusCode == 200) {
       _userList.value = json
         .decode(response.body)['data']
