@@ -40,7 +40,7 @@ class ButtonBasic extends StatelessWidget {
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: bgColor,
-            border: Border.all(color: UIColor.osloGray, width: 1),
+            border: Border.all(color: UIColor.darkGray, width: 1),
             borderRadius: BorderRadius.all(Radius.circular(radius)),
           ),
           margin: EdgeInsets.symmetric(horizontal: padding ?? 0),

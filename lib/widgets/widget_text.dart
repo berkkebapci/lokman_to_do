@@ -33,7 +33,7 @@ class TextBasic extends StatelessWidget {
       maxLines: maxLines ?? 999,
       textScaleFactor: 1.0,
       style: TextStyle(
-        color: color ?? UIColor.osloGray,
+        color: color ?? UIColor.darkGray,
         fontSize: fontSize,
         decoration: underline! ? TextDecoration.underline : null,
         fontWeight: fontWeight ?? FontWeight.w400,

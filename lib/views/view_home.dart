@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lokman_to_do/shared/uicolor.dart';
 import 'package:lokman_to_do/views/view_to_do.dart';
 import 'package:lokman_to_do/views/view_user_list.dart';
 
@@ -19,7 +20,7 @@ class _ViewHomeState extends State<ViewHome> {
   }
 
   int _currentIndex = 0;
-  final List<Widget> _children = [ViewUserList(), const ViewToDo()];
+  final List<Widget> _children = [ViewUserList(), ViewToDo()];
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +29,15 @@ class _ViewHomeState extends State<ViewHome> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         currentIndex: _currentIndex,
+        selectedItemColor: UIColor.lokmanColor,
+        selectedLabelStyle: TextStyle(fontWeight: FontWeight.w700),
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.people),
             label: "Kullanıcılar",
-          ),
+          ), 
           BottomNavigationBarItem(
-            icon: Icon(Icons.text_increase),
+            icon: Icon(Icons.check,),
             label: "To Do",
           ),
         ],

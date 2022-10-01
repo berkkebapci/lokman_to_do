@@ -14,6 +14,8 @@ class LoginTextField extends StatelessWidget {
   final bool obscureText;
   final int? maxLength;
   final int? maxLines;
+  final double? fontSize;
+  final double? hintSize;
   final bool? enabled;
   final double? radius;
   final String? hint;
@@ -30,6 +32,8 @@ class LoginTextField extends StatelessWidget {
     this.textInputAction,
     this.requestFocus,
     this.validator,
+    this.fontSize,
+    this.hintSize,
     this.controller,
     required this.obscureText,
     this.maxLength,
@@ -65,32 +69,34 @@ class LoginTextField extends StatelessWidget {
           validator: validator,
           style: TextStyle(
             color: UIColor.lokmanColor.withOpacity(.8),
-            fontSize: 16.0,
+            fontSize: fontSize ?? 14,
           ),
           decoration: InputDecoration(
-            hintText: hint,
-            hintStyle: TextStyle(
-              color: UIColor.lokmanColor.withOpacity(.8),
-              fontSize: 16.0,
-            ),
-            errorStyle: TextStyle(color: UIColor.red),
-            fillColor: UIColor.transparent,
-            filled: true,
-            suffixIcon: suffixIcon,
-            prefixIcon: prefixIcon,
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10)),
-            focusedBorder: OutlineInputBorder(
+              hintText: hint,
+              hintStyle: TextStyle(
+                color: UIColor.lokmanColor.withOpacity(.8),
+                fontSize: hintSize ?? 14,
+              ),
+              errorStyle: TextStyle(color: UIColor.red),
+              fillColor: UIColor.transparent,
+              filled: true,
+              suffixIcon: suffixIcon,
+              prefixIcon: prefixIcon,
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(color: UIColor.lokmanColor)),
+              labelText: label,
+              labelStyle: const TextStyle(color: Colors.black54),
+              focusColor: UIColor.lokmanColor,
+              focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: UIColor.lokmanColor)),
-            labelText: label,
-            labelStyle: const TextStyle(color: Colors.black54),
-            focusColor: UIColor.lokmanColor,
-            focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: UIColor.red),
-            ),
-          ),
+                borderSide: BorderSide(color: UIColor.red),
+              ),
+              errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(color: UIColor.red))),
         ),
       ),
     );

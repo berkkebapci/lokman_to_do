@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lokman_to_do/shared/uicolor.dart';
 import 'package:lokman_to_do/views/view_home.dart';
 import 'package:lokman_to_do/views/view_login.dart';
 
@@ -14,9 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Lokman To Do',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      color: UIColor.lokmanColor,
       debugShowCheckedModeBanner: false,
       home: const ViewHome(),
     );

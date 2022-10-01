@@ -4,13 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lokman_to_do/controllers/controller_user_list.dart';
+import 'package:lokman_to_do/shared/uicolor.dart';
 import 'package:lokman_to_do/shared/uisize.dart';
 import 'package:lokman_to_do/widgets/widget_text.dart';
 
 class ViewUserList extends StatelessWidget {
-  final int? id;
 
-  ViewUserList({Key? key, this.id}) : super(key: key);
+  ViewUserList({Key? key}) : super(key: key);
   final c = Get.put(ControllerUserList());
 
   @override
@@ -20,6 +20,7 @@ class ViewUserList extends StatelessWidget {
             title: const Text("Kullanıcılar"),
             automaticallyImplyLeading: false,
             centerTitle: true,
+            backgroundColor: UIColor.lokmanColor,
           ),
           body: body(),
         )));
@@ -82,7 +83,7 @@ class ViewUserList extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
             SizedBox(
-              width: 4,
+              width: 4 * UISize.autoSize,
             ),
             TextBasic(
               text: c.userList![index].lastName!,
