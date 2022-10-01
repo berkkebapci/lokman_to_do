@@ -1,12 +1,9 @@
 // ignore_for_file: prefer_is_empty
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lokman_to_do/controllers/controller_to_do.dart';
-import 'package:lokman_to_do/controllers/controller_user_list.dart';
 import 'package:lokman_to_do/models/storage_item.dart';
-import 'package:lokman_to_do/services/storage_service.dart';
 import 'package:lokman_to_do/shared/uicolor.dart';
 import 'package:lokman_to_do/shared/uisize.dart';
 import 'package:lokman_to_do/views/view_login.dart';
@@ -14,9 +11,7 @@ import 'package:lokman_to_do/widgets/widget_text.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ViewToDo extends StatelessWidget {
-  final int? id;
-
-  ViewToDo({Key? key, this.id}) : super(key: key);
+  ViewToDo({Key? key}) : super(key: key);
   final c = Get.put(ControllerToDo());
 
   @override
@@ -38,7 +33,7 @@ class ViewToDo extends StatelessWidget {
                       prefs.clear();
                       Get.offAll(ViewLogin());
                     },
-                    child: Icon(Icons.exit_to_app)),
+                    child: const Icon(Icons.exit_to_app)),
               )
             ],
           ),
@@ -101,7 +96,7 @@ class ViewToDo extends StatelessWidget {
                               fontSize: 14 * UISize.autoSize,
                               fontWeight: FontWeight.w500,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
@@ -137,7 +132,7 @@ class ViewToDo extends StatelessWidget {
         child: Column(
       children: [
         SizedBox(
-          height: 40,
+          height: 40 * UISize.autoSize,
         ),
         TextBasic(
           text: "Yeni Bir Görev Eklemek İçin \nSağ Alttaki Butona Tıklayınız",
@@ -165,13 +160,13 @@ class ViewToDo extends StatelessWidget {
                 InkWell(
                     onTap: () {
                       c.writeSecureData(
-                          StorageItem(c.controller.text, 'Tamamlanmadı'));
+                          StorageItem(c.controller.text, 'Tamamlandı'));
                       c.controller.clear();
                       Get.back();
                     },
                     child: Container(
                         padding:
-                            EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                            EdgeInsets.symmetric(horizontal: 12 * UISize.autoSize, vertical: 8 * UISize.autoSize),
                         decoration: BoxDecoration(
                             color: UIColor.lokmanColor,
                             borderRadius: BorderRadius.circular(8)),
@@ -185,7 +180,7 @@ class ViewToDo extends StatelessWidget {
         );
       },
       backgroundColor: UIColor.lokmanColor,
-      child: Icon(
+      child: const Icon(
         Icons.add,
       ),
     );

@@ -6,5 +6,5 @@ class UIColor {
   static Color black = const Color(0xFF000000);
   static Color white = const Color(0xFFFFFFFF);
   static Color darkGray = const Color(0xFF333333);
-  static Color red = Color.fromARGB(255, 252, 0, 0);
+  static Color red = const Color.fromARGB(255, 252, 0, 0);
 }

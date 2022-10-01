@@ -30,7 +30,7 @@ class _ViewHomeState extends State<ViewHome> {
         onTap: onTabTapped,
         currentIndex: _currentIndex,
         selectedItemColor: UIColor.lokmanColor,
-        selectedLabelStyle: TextStyle(fontWeight: FontWeight.w700),
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w700),
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.people),

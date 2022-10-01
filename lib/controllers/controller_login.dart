@@ -1,9 +1,9 @@
-import 'dart:io';
+// ignore_for_file: avoid_print, unrelated_type_equality_checks, unused_local_variable
 
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lokman_to_do/models/login_model_post.dart';
-import 'package:lokman_to_do/models/login_model_response.dart';
 import 'package:lokman_to_do/services/endpoint.dart';
 import 'package:http/http.dart' as http;
 import 'package:lokman_to_do/views/view_home.dart';
@@ -61,11 +61,9 @@ class ControllerLogin extends GetxController {
   void login() async {
     if (_online == true) {
       LoginModelPost postitem = LoginModelPost(
-          /* 
         email: _usernameController.text,
-        password: _passwordController.text, */
-          email: 'eve.holt@reqres.in',
-          password: 'cityslicka');
+        password: _passwordController.text,
+      );
 
       var response =
           await http.post(Uri.parse(Endpoint.login), body: postitem.toJson());
@@ -73,8 +71,8 @@ class ControllerLogin extends GetxController {
         String token = response.body;
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setBool("isLoggedIn", true);
-        
-        Get.offAll(() => ViewHome());
+
+        Get.offAll(() => const ViewHome());
       } else {
         Get.snackbar(
             "Giriş Yapılamadı", "Mail Adresinizi ve Şifrenizi Kontrol Ediniz");

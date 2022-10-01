@@ -9,7 +9,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var status = prefs.getBool('isLoggedIn') ?? false;
-  print(status);
   runApp(GetMaterialApp(debugShowCheckedModeBanner: false,home:status == true ? const ViewHome() : ViewLogin()));
 }
 

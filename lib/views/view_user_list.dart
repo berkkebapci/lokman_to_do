@@ -33,7 +33,7 @@ class ViewUserList extends StatelessWidget {
                       prefs.clear();
                       Get.offAll(ViewLogin());
                     },
-                    child: Icon(Icons.exit_to_app)),
+                    child: const Icon(Icons.exit_to_app)),
               )
             ],
           ),
