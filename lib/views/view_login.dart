@@ -10,16 +10,13 @@ import 'package:lokman_to_do/widgets/widget_text.dart';
 import 'package:lokman_to_do/widgets/widget_textfield.dart';
 
 class ViewLogin extends StatelessWidget {
-  final int? id;
 
-  ViewLogin({Key? key, this.id}) : super(key: key);
+  ViewLogin({Key? key}) : super(key: key);
   final c = Get.put(ControllerLogin());
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Obx(
+    return  Obx(
         () => Scaffold(
           appBar: AppBar(
             title: TextBasic(
@@ -33,8 +30,8 @@ class ViewLogin extends StatelessWidget {
           ),
           body: body(),
         ),
-      ),
-    );
+      );
+    
   }
 
   Widget body() {
@@ -42,14 +39,14 @@ class ViewLogin extends StatelessWidget {
         child: Column(
       children: [
         SizedBox(
-          height: 32 * UISize.autoSize,
+          height: 52 * UISize.autoSize,
         ),
         c.isOnline == true ?
         Image.network(
             "https://eticaret.lokmanecza.com/Content/img/logo-loading.png",
             height: 60 * UISize.autoSize):Container(),
         SizedBox(
-          height: 20 * UISize.autoSize,
+          height: 72 * UISize.autoSize,
         ),
         getTextField(
             "Mail Adresiniz".obs,
@@ -72,6 +69,7 @@ class ViewLogin extends StatelessWidget {
             ),
             c.passwordController,
             c.obscureText),
+            SizedBox(height: 8 * UISize.autoSize,),
         getButton()
       ],
     ));

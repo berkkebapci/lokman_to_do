@@ -3,9 +3,14 @@ import 'package:get/get.dart';
 import 'package:lokman_to_do/shared/uicolor.dart';
 import 'package:lokman_to_do/views/view_home.dart';
 import 'package:lokman_to_do/views/view_login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(ViewLogin());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var status = prefs.getBool('isLoggedIn') ?? false;
+  print(status);
+  runApp(GetMaterialApp(debugShowCheckedModeBanner: false,home:status == true ? const ViewHome() : ViewLogin()));
 }
 
 class MyApp extends StatelessWidget {

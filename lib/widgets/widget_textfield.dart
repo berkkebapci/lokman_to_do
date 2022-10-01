@@ -85,17 +85,17 @@ class LoginTextField extends StatelessWidget {
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
               focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(color: UIColor.lokmanColor)),
               labelText: label,
               labelStyle: const TextStyle(color: Colors.black54),
               focusColor: UIColor.lokmanColor,
               focusedErrorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(8),
                 borderSide: BorderSide(color: UIColor.red),
               ),
               errorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(color: UIColor.red))),
         ),
       ),

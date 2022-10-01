@@ -7,6 +7,7 @@ import 'package:lokman_to_do/models/login_model_response.dart';
 import 'package:lokman_to_do/services/endpoint.dart';
 import 'package:http/http.dart' as http;
 import 'package:lokman_to_do/views/view_home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ControllerLogin extends GetxController {
   @override
@@ -70,6 +71,9 @@ class ControllerLogin extends GetxController {
           await http.post(Uri.parse(Endpoint.login), body: postitem.toJson());
       if (response.statusCode == 200) {
         String token = response.body;
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setBool("isLoggedIn", true);
+        
         Get.offAll(() => ViewHome());
       } else {
         Get.snackbar(

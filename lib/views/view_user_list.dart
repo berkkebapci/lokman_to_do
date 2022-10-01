@@ -6,21 +6,36 @@ import 'package:get/get.dart';
 import 'package:lokman_to_do/controllers/controller_user_list.dart';
 import 'package:lokman_to_do/shared/uicolor.dart';
 import 'package:lokman_to_do/shared/uisize.dart';
+import 'package:lokman_to_do/views/view_login.dart';
 import 'package:lokman_to_do/widgets/widget_text.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ViewUserList extends StatelessWidget {
-
   ViewUserList({Key? key}) : super(key: key);
   final c = Get.put(ControllerUserList());
 
   @override
   Widget build(BuildContext context) {
     return Obx(() => (Scaffold(
+          backgroundColor: Colors.grey.shade200,
           appBar: AppBar(
             title: const Text("Kullanıcılar"),
             automaticallyImplyLeading: false,
             centerTitle: true,
             backgroundColor: UIColor.lokmanColor,
+            actions: [
+              Padding(
+                padding: EdgeInsets.only(right: 8 * UISize.autoSize),
+                child: InkWell(
+                    onTap: () async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.clear();
+                      Get.offAll(ViewLogin());
+                    },
+                    child: Icon(Icons.exit_to_app)),
+              )
+            ],
           ),
           body: body(),
         )));
@@ -91,6 +106,9 @@ class ViewUserList extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ],
+        ),
+        SizedBox(
+          height: 4 * UISize.autoSize,
         ),
         TextBasic(
             text: c.userList![index].email!, fontSize: 14 * UISize.autoSize),
